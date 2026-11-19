@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Четыре Лапы — Мой питомец: прототип</title>
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=s9Gj4jzvJdLFNO92sWF9-Ppb-fvCDX-6Pz7BjqR-Yvxu2x2h2AVPqoZJRhD0ptP-aPB44S0cEre8bzn6haGVPnkFfay5uBsSL5L2d6UotPCRVZ6sH_ERe899zSp43mTYAuMmyQ2dMBTOpw-x5B-uzfnlsX2xgZIgwElN75cvozwomd3Sx586E1GUUoqjnRj85REvxsDAkDMrR16cZetVgPegK3_OlRj3bg_bkql9uQt7BrV0xvKBf8ektWBWHlsHqsHz3p6qN8WowIaDvSHxjbKYH2F8q0GN9fJt6Nguj9LqFj0rnXvxRthsguTgoL4mbYL_AF4vKBBXeT5leXK6Gyxm0RC6VWegDHohxZ3BiKN3kJXIDeN8kAGROTBvxobUIaUL1iDh1Bf1hJPiHTWFNVM4PhmAJA0QcmzjFvwCwUJZcmnnCyiEAGdw_GkWuDH5NgIFbDcilgm_8VoXabi0Yu2H-yOg8_uX6bsiqSQepfJZXV7VBrqBOeiOQxdQFYCMrK4X0BmG-ATROF5yowrVcSRwlF9rRnOruBSzMjKAYresavVKDzURBhpfVURY76lCYuPX95tF44DAdsZmiDZ6La-6V95vBDa4ZhsIrg8MPh-1t5wTA74bCW0SO9uul4i-yK78mE73Ohmc-0XD1OcaHFoFRbRdGSd9qHdrN5ZSdwTrDnrAkrl8913X9PRl1HkM4D9V_g_YB9WZb65CtY6BQClT7-HRIsJntQVAMllXeekjw_CtoUuyzgqow8eDpHew" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly93ZWJhdHRhY2gubWFpbC55YW5kZXgubmV0L21lc3NhZ2VfcGFydF9yZWFsL2NoZXR5cmUtbGFweS1wcm90b3R5cGUtdXBkYXRlZCUyMCgzKS5odG1sP25hbWU9Y2hldHlyZS1sYXB5LXByb3RvdHlwZS11cGRhdGVkJTIwKDMpLmh0bWwmc2lkPVlXVnpYM05wWkRwN0ltRmxjMHRsZVVsa0lqb2lNVGM0SWl3aWFHMWhZMHRsZVVsa0lqb2lNVGM0SWl3aWFYWkNZWE5sTmpRaU9pSm9RVWQ0U1hkWUwxWm1ibkZ4VFhWWmMyVlJTbVpSUFQwaUxDSnphV1JDWVhObE5qUWlPaUl4YVU5SE1uQTBZbXcyWVVsblMzZERNelpOT0ZGRE1DOXFaVzB2U0RWdVdYZ3pWV3hIYmtoTmIyUmlUM1ZCYUVkQ1QzQjJhV0l4ZEZNelNuSnlXRWxNV0hkR1lsWTBTR0k0V1VkeFVWUXZSR295YVVOdlMwNWljSEpsU0hadVFURlVUMlZOZWtaeVFVeEpORlJ6TUVaRFJqaEhiRmRWYTNjMlJ6aHFWRWRxZUd0RWQyVnNhWFJKYmpacVZ6WmlTRE5RZVRCdGMyYzlQU0lzSW1odFlXTkNZWE5sTmpRaU9pSm5SakZpZFRWSFZuRlNPRFZ3YUhsblZHaENTRzVUZVVKTllpOHlhR0V3YlZWWGNsTjJiWFZzZUZnNFBTSjk"/><style>
+:root{
+  --or:#F15A24;
+  --or2:#E04E1A;
+  --or-soft:#FFF3ED;
+  --or-light:#FFE4D6;
+  --pk:#F5B8C4;
+  --pk-soft:#FDF0F3;
+  --bk:#1A1A1A;
+  --wh:#FFFFFF;
+  --bg:#F6F6F7;
+  --mu:#6B6B6B;
+  --mu2:#9A9A9A;
+  --line:#EBEBEB;
+  --er:#D93025;
+  --ok:#2E7D32;
+  --shadow:0 4px 20px rgba(0,0,0,.06);
+  --shadow2:0 12px 40px rgba(0,0,0,.1);
+}
+/* Official-style brand mark: running dog on orange/pink split */
+.brand-mark{
+  width:36px;height:36px;
+  border-radius:10px;
+  background:linear-gradient(90deg,var(--or) 50%,var(--pk) 50%);
+  display:grid;place-items:center;
+  flex:none;
+  overflow:hidden;
+  box-shadow:0 3px 12px rgba(241,90,36,.28);
+}
+.brand-mark svg{width:22px;height:22px;display:block}
+.brand-mark.sm{width:26px;height:26px;border-radius:8px}
+.brand-mark.sm svg{width:16px;height:16px}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:"Segoe UI",Roboto,-apple-system,BlinkMacSystemFont,Arial,sans-serif;
+  background:#EDEDEF;
+  color:var(--bk);
+  display:flex;
+  justify-content:center;
+  gap:48px;
+  align-items:center;
+  padding:24px;
+}
+.side{width:300px;flex:none}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font:800 21px/1.1 system-ui,sans-serif;
+  color:var(--bk);
+  letter-spacing:-.4px;
+  text-transform:lowercase;
+}
+.logo b{color:var(--or);font-weight:800}
+.side p{margin:14px 0 24px;color:var(--mu);line-height:1.5;font-size:14px}
+.steps{list-style:none;padding:0;display:grid;gap:6px}
+.steps button{
+  width:100%;text-align:left;border:0;
+  background:var(--wh);
+  padding:11px 16px;
+  border-radius:12px;
+  font:600 14px inherit;
+  cursor:pointer;
+  color:var(--bk);
+  box-shadow:var(--shadow);
+  transition:all .15s;
+}
+.steps button:hover{background:var(--or-soft)}
+.steps button.on{
+  background:var(--or);
+  color:#fff;
+  box-shadow:0 4px 16px rgba(232,90,27,.35);
+}
+.steps button:focus-visible,.btn:focus-visible,.ch:focus-visible{
+  outline:3px solid var(--or);
+  outline-offset:2px;
+}
+.phone{
+  width:400px;
+  height:min(820px,calc(100vh - 40px));
+  background:var(--wh);
+  border-radius:40px;
+  border:10px solid #1C1C1E;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  position:relative;
+  flex:none;
+  box-shadow:0 25px 60px rgba(0,0,0,.18);
+}
+.scr{
+  flex:1;
+  overflow-y:auto;
+  padding:20px 22px 18px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  background:var(--wh);
+  animation:in .28s ease;
+}
+@keyframes in{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.scr{animation:none}}
+
+/* Typography */
+h1{font:800 24px/1.15 system-ui,sans-serif;letter-spacing:-.4px;color:var(--bk)}
+h2{font:700 18px/1.25 system-ui,sans-serif;color:var(--bk)}
+.mu{color:var(--mu);font-size:14px;line-height:1.45}
+.mu2{color:var(--mu2);font-size:13px}
+
+/* Buttons */
+.btn{
+  border:0;border-radius:999px;
+  padding:16px 22px;
+  font:700 16px system-ui,sans-serif;
+  background:var(--or);
+  color:#fff;
+  cursor:pointer;
+  width:100%;
+  transition:background .15s,transform .1s,box-shadow .15s;
+  box-shadow:0 8px 24px rgba(241,90,36,.35);
+}
+.btn:hover{background:var(--or2);box-shadow:0 10px 28px rgba(241,90,36,.42);transform:translateY(-1px)}
+.btn:active{transform:scale(.98)}
+.btn.g{
+  background:var(--bg);
+  color:var(--bk);
+  box-shadow:none;
+  border:1.5px solid var(--line);
+}
+.btn.g:hover{background:#eee}
+.btn[disabled]{background:#E5E5E5;color:#A0A0A0;cursor:not-allowed;box-shadow:none}
+.sp{flex:1}
+
+/* Promo hero – joyful first screen */
+.promo-wrap{
+  display:flex;
+  flex-direction:column;
+  height:100%;
+  margin:-20px -22px -18px;
+  background:#FFFBF8;
+  position:relative;
+  overflow:hidden;
+}
+/* soft shapes only behind the dog, not under text */
+.promo-wrap::before{
+  content:'';
+  position:absolute;
+  width:320px;height:320px;
+  background:radial-gradient(circle,rgba(255,190,130,.4) 0%,rgba(255,232,217,0) 68%);
+  bottom:40px;right:-100px;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:0;
+}
+.promo-wrap::after{
+  content:'';
+  position:absolute;
+  width:240px;height:240px;
+  background:radial-gradient(circle,rgba(255,200,150,.3) 0%,rgba(255,244,238,0) 70%);
+  bottom:120px;left:-100px;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:0;
+}
+.promo-blob{display:none} /* blobs removed from text area */
+
+.promo-top{
+  padding:24px 22px 12px;
+  text-align:center;
+  position:relative;
+  z-index:5;
+  background:#FFFBF8;
+  flex:none;
+}
+.promo-logo{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font:700 14px system-ui,sans-serif;
+  color:var(--bk);
+  margin-bottom:14px;
+  background:#fff;
+  padding:5px 14px 5px 5px;
+  border-radius:999px;
+  box-shadow:0 4px 16px rgba(0,0,0,.08);
+  text-transform:lowercase;
+  letter-spacing:-.2px;
+}
+.promo-logo b{color:var(--or)}
+.promo-title{
+  font:800 26px/1.18 system-ui,sans-serif;
+  letter-spacing:-.5px;
+  color:var(--bk);
+  margin-bottom:8px;
+  padding:0 4px;
+}
+.promo-title span{
+  color:var(--or);
+}
+.promo-sub{
+  font-size:14px;
+  line-height:1.5;
+  color:var(--mu);
+  padding:0 10px;
+  max-width:300px;
+  margin:0 auto;
+}
+.promo-dog{
+  flex:1 1 auto;
+  display:flex;
+  align-items:stretch;
+  justify-content:center;
+  position:relative;
+  min-height:220px;
+  z-index:1;
+  padding:0 14px;
+}
+.promo-dog-inner{
+  position:relative;
+  width:100%;
+  height:100%;
+  min-height:220px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  overflow:hidden;
+  border-radius:24px;
+  box-shadow:0 12px 36px rgba(0,0,0,.12);
+}
+.promo-dog img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 15%;
+  filter:saturate(1.12) contrast(1.04);
+}
+.promo-dog .fade{
+  position:absolute;
+  left:0;right:0;bottom:0;
+  height:60px;
+  background:linear-gradient(transparent, rgba(255,251,248,.9));
+  pointer-events:none;
+  z-index:2;
+}
+.match-badge{
+  position:absolute;
+  right:12px;
+  bottom:12px;
+  background:#fff;
+  border-radius:16px;
+  padding:9px 12px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  box-shadow:0 6px 20px rgba(0,0,0,.14);
+  z-index:4;
+  animation:popIn .45s cubic-bezier(.2,1.1,.4,1) .1s both;
+}
+@keyframes popIn{
+  from{opacity:0;transform:scale(.88) translateY(8px)}
+  to{opacity:1;transform:scale(1) translateY(0)}
+}
+.match-badge .avs{
+  display:flex;
+}
+.match-badge .avs span{
+  width:30px;height:30px;
+  border-radius:50%;
+  background:linear-gradient(145deg,#FFF0E6,#FFE0C8);
+  border:2.5px solid #fff;
+  margin-left:-9px;
+  display:grid;place-items:center;
+  font-size:15px;
+  box-shadow:0 2px 5px rgba(0,0,0,.08);
+}
+.match-badge .avs span:first-child{margin-left:0}
+.match-badge .pct{
+  font:800 18px system-ui,sans-serif;
+  color:var(--or);
+  line-height:1;
+}
+.match-badge .pct small{
+  display:block;
+  font:600 10.5px system-ui,sans-serif;
+  color:var(--mu);
+  margin-top:2px;
+  letter-spacing:.15px;
+}
+.promo-cta{
+  padding:12px 24px 26px;
+  background:#FFFBF8;
+  position:relative;
+  z-index:5;
+  flex:none;
+}
+.promo-cta .btn{
+  margin-bottom:8px;
+  font-size:16.5px;
+  padding:16px 22px;
+  box-shadow:0 8px 26px rgba(232,90,27,.32);
+  letter-spacing:.15px;
+}
+.promo-cta .btn:hover{
+  box-shadow:0 10px 30px rgba(232,90,27,.4);
+  transform:translateY(-1px);
+}
+.promo-cta .skip{
+  display:block;
+  text-align:center;
+  font:600 14.5px system-ui,sans-serif;
+  color:var(--mu2);
+  background:none;
+  border:0;
+  cursor:pointer;
+  width:100%;
+  padding:8px;
+  transition:color .15s;
+}
+.promo-cta .skip:hover{color:var(--bk)}
+
+/* Cards & lists */
+.list{display:grid;gap:8px;font-size:15px}
+.list div{
+  background:var(--bg);
+  border-radius:14px;
+  padding:12px 16px;
+  border:1px solid var(--line);
+}
+.tip{
+  background:var(--or-soft);
+  border-radius:14px;
+  padding:12px 16px;
+  font-size:14px;
+  font-weight:600;
+  color:var(--or2);
+  border:1px solid var(--or-light);
+}
+.card{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  border:1.5px solid var(--line);
+  border-radius:18px;
+  padding:12px 14px;
+  background:#fff;
+  transition:border-color .15s,box-shadow .15s;
+}
+.card.hl{
+  border-color:var(--or);
+  background:var(--or-soft);
+  box-shadow:0 4px 16px rgba(232,90,27,.1);
+}
+.card .av{
+  font-size:28px;
+  width:52px;height:52px;
+  border-radius:50%;
+  background:var(--bg);
+  display:grid;place-items:center;
+  flex:none;
+  border:1px solid var(--line);
+}
+.card .t{flex:1;min-width:0}
+.card .t small{display:block;color:var(--mu);font-size:13px;margin-top:3px;line-height:1.35}
+.pct{font:800 15px system-ui,sans-serif;color:var(--or)}
+.mini{
+  border:0;border-radius:999px;
+  padding:9px 16px;
+  font:700 13px system-ui,sans-serif;
+  background:var(--bk);
+  color:#fff;
+  cursor:pointer;
+  white-space:nowrap;
+  transition:background .15s;
+}
+.mini:hover{background:#333}
+.mini.done{
+  background:var(--or-light);
+  color:var(--or2);
+  cursor:default;
+}
+
+/* Forms */
+label.f{display:grid;gap:6px;font-size:13px;color:var(--mu);font-weight:600}
+input,select,textarea{
+  font:16px system-ui,sans-serif;
+  border:1.5px solid var(--line);
+  border-radius:14px;
+  padding:13px 16px;
+  width:100%;
+  background:#fff;
+  color:var(--bk);
+  transition:border-color .15s;
+}
+input:focus,select:focus,textarea:focus{
+  outline:none;
+  border-color:var(--or);
+  box-shadow:0 0 0 3px rgba(232,90,27,.12);
+}
+.bad input,.bad select{border-color:var(--er)}
+.err{color:var(--er);font-size:13px;font-weight:600;min-height:0}
+.ph{
+  height:120px;
+  border-radius:20px;
+  background:var(--bg);
+  display:grid;place-items:center;
+  font-size:44px;
+  border:2px dashed var(--line);
+}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.ch{
+  border:1.5px solid var(--line);
+  background:#fff;
+  border-radius:999px;
+  padding:12px 18px;
+  font:600 15px system-ui,sans-serif;
+  cursor:pointer;
+  color:var(--bk);
+  transition:all .15s;
+}
+.quiz-mode .ch{
+  padding:8px 14px;
+  font-size:14px;
+}
+.quiz-mode .chips{gap:6px}
+.quiz-mode.scr{padding:14px 18px 12px;gap:8px}
+.ch:hover{border-color:var(--or);background:var(--or-soft)}
+.ch.on{
+  background:var(--or);
+  border-color:var(--or);
+  color:#fff;
+}
+.ch.ch-idk{border-style:dashed;color:var(--mu2)}
+.ch.ch-idk.on{background:#f0f0f0;border-color:#ccc;color:var(--mu);border-style:solid}
+.sec-label{
+  display:inline-block;
+  background:var(--or-soft);
+  color:var(--or2);
+  font:700 12px system-ui,sans-serif;
+  padding:5px 12px;
+  border-radius:999px;
+  margin-bottom:8px;
+  letter-spacing:.2px;
+}
+.bad .chips{outline:2px solid var(--er);outline-offset:6px;border-radius:14px}
+.choose-photo{
+  border-radius:20px;
+  overflow:hidden;
+  height:180px;
+  margin:4px 0 8px;
+  box-shadow:0 10px 28px rgba(0,0,0,.1);
+  position:relative;
+}
+.choose-photo img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.choose-photo .fade{
+  position:absolute;left:0;right:0;bottom:0;height:50px;
+  background:linear-gradient(transparent,#fff);
+}
+.map-banner{
+  display:flex;align-items:center;gap:12px;
+  width:100%;text-align:left;
+  background:linear-gradient(135deg,#FFF3ED,#FFE8D6);
+  border:1.5px solid var(--or-light);
+  border-radius:16px;padding:12px 14px;margin:10px 0 12px;
+  cursor:pointer;font:inherit;color:var(--bk);
+}
+.map-banner .map-ico{font-size:28px;flex:none}
+.map-banner b{display:block;font-size:14.5px}
+.map-banner small{display:block;color:var(--mu);font-size:12.5px;margin-top:2px;font-weight:500}
+.map-banner .map-arrow{margin-left:auto;color:var(--or);font-weight:700;font-size:18px}
+.map-view{
+  background:linear-gradient(160deg,#E8F5E9 0%,#FFF8F0 50%,#F0F4FF 100%);
+  border-radius:20px;height:280px;position:relative;overflow:hidden;
+  border:1.5px solid var(--line);margin-bottom:12px;
+}
+.map-pin{
+  position:absolute;transform:translate(-50%,-100%);
+  text-align:center;cursor:pointer;
+}
+.map-pin .dot{
+  width:36px;height:36px;border-radius:50%;
+  background:#fff;border:2.5px solid var(--or);
+  display:grid;place-items:center;font-size:16px;
+  box-shadow:0 4px 12px rgba(0,0,0,.15);margin:0 auto;
+  overflow:hidden;
+}
+.map-pin .dot img{width:100%;height:100%;object-fit:cover}
+.map-pin small{display:block;background:#fff;border-radius:8px;padding:2px 6px;font-size:10px;font-weight:700;margin-top:4px;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.map-legend{font-size:12.5px;color:var(--mu);text-align:center;margin-bottom:8px}
+.cal-week{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:14px}
+.cal-day{
+  text-align:center;padding:8px 2px;border-radius:12px;
+  background:var(--bg);font-size:12px;font-weight:600;cursor:pointer;
+}
+.cal-day b{display:block;font-size:16px;margin-top:2px}
+.cal-day.on{background:var(--or);color:#fff}
+.cal-day.has{outline:2px solid var(--or);outline-offset:-2px}
+.cal-event{
+  background:#fff;border:1.5px solid var(--line);border-radius:14px;
+  padding:12px 14px;margin-bottom:8px;display:flex;gap:10px;align-items:center;
+}
+.cal-event .ce-ico{width:40px;height:40px;border-radius:12px;background:var(--or-soft);display:grid;place-items:center;font-size:18px;flex:none}
+.cal-event b{font-size:14px}
+.cal-event small{display:block;color:var(--mu);font-size:12.5px;margin-top:2px}
+.tag{
+  display:inline-block;
+  background:var(--or-soft);
+  color:var(--or2);
+  border-radius:999px;
+  padding:5px 12px;
+  font-size:13px;
+  font-weight:700;
+  border:1px solid var(--or-light);
+}
+.bar{height:6px;background:var(--bg);border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--or);transition:width .3s;border-radius:6px}
+.more{
+  background:none;border:0;
+  color:var(--or);
+  font:700 14px system-ui,sans-serif;
+  cursor:pointer;
+  text-align:left;padding:0;
+}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:14px}
+.chk input{width:22px;height:22px;accent-color:var(--or);flex:none;padding:0}
+.chk u{cursor:pointer;color:var(--or);text-decoration:underline}
+.row{display:flex;gap:10px}
+.toast{
+  position:absolute;
+  left:16px;right:16px;bottom:20px;
+  background:var(--bk);
+  color:#fff;
+  border-radius:16px;
+  padding:14px 18px;
+  font-size:14px;
+  font-weight:600;
+  animation:in .25s;
+  z-index:20;
+  box-shadow:0 8px 24px rgba(0,0,0,.2);
+}
+.nav{display:flex;align-items:center;gap:12px}
+.back{
+  border:0;
+  background:var(--bg);
+  border-radius:50%;
+  width:40px;height:40px;
+  font-size:18px;
+  cursor:pointer;
+  flex:none;
+  display:grid;place-items:center;
+  transition:background .15s;
+}
+.back:hover{background:#e8e8e8}
+.big2{font-size:64px;text-align:center;line-height:1}
+.app{
+  background:var(--bg);
+  border-radius:18px;
+  padding:12px;
+  display:flex;gap:10px;align-items:center;
+}
+.app.hl{outline:3px solid var(--or)}
+
+/* Status bar simulation */
+.status-bar{
+  height:44px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  padding:0 22px 6px;
+  font-size:13px;
+  font-weight:600;
+  color:var(--bk);
+  background:transparent;
+  flex:none;
+}
+
+/* ===== Social screens (after onboarding) ===== */
+.bnav{
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+  padding:10px 12px 14px;
+  background:#1C1C1E;
+  border-radius:28px;
+  margin:8px 12px 12px;
+  flex:none;
+  gap:4px;
+}
+.bnav button{
+  border:0;background:transparent;
+  width:48px;height:44px;
+  border-radius:50%;
+  display:grid;place-items:center;
+  font-size:20px;
+  cursor:pointer;
+  color:#aaa;
+  transition:all .15s;
+}
+.bnav button.on{
+  background:var(--or);
+  color:#fff;
+  box-shadow:0 4px 14px rgba(232,90,27,.4);
+}
+.bnav button:hover:not(.on){color:#fff}
+
+.hero-pet{
+  background:linear-gradient(165deg,#FFE0C8 0%,#FFD4E0 45%,#FFF0F3 100%);
+  border-radius:0 0 32px 32px;
+  margin:-20px -22px 0;
+  padding:36px 20px 44px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.hero-pet::before{
+  content:'';
+  position:absolute;
+  width:180px;height:180px;
+  background:rgba(255,255,255,.35);
+  border-radius:50%;
+  top:-40px;right:-30px;
+}
+.hero-pet .dog-big{font-size:108px;line-height:1;filter:drop-shadow(0 12px 24px rgba(0,0,0,.1));position:relative;z-index:1}
+.sheet{
+  background:#fff;
+  border-radius:28px 28px 0 0;
+  margin-top:-24px;
+  padding:22px 20px 8px;
+  position:relative;
+  z-index:2;
+  box-shadow:0 -4px 24px rgba(0,0,0,.04);
+}
+.sheet-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:16px;
+}
+.sheet-head h1{font-size:24px;margin:0}
+.sheet-head .meta{color:var(--mu);font-size:14px;margin-top:4px;line-height:1.4}
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  background:var(--bg);
+  border-radius:16px;
+  padding:14px 8px;
+  margin-bottom:16px;
+  text-align:center;
+}
+.stats b{display:block;font:800 20px system-ui,sans-serif;color:var(--bk)}
+.stats span{font-size:12px;color:var(--mu);font-weight:600}
+.desc{font-size:15px;line-height:1.5;color:#444;margin-bottom:14px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.tag-s{
+  display:inline-flex;align-items:center;gap:5px;
+  background:var(--or-soft);
+  color:var(--or2);
+  border-radius:999px;
+  padding:7px 12px;
+  font-size:13px;font-weight:600;
+}
+.album-title{font:700 16px system-ui,sans-serif;margin-bottom:10px}
+.album{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.album-item{
+  background:#FFF5EC;
+  border-radius:16px;
+  height:100px;
+  display:grid;place-items:center;
+  font-size:40px;
+}
+
+/* Nearby friends */
+.stories{
+  display:flex;gap:14px;
+  overflow-x:auto;
+  padding:4px 2px 12px;
+  margin:0 -4px;
+  scrollbar-width:none;
+}
+.stories::-webkit-scrollbar{display:none}
+.story{
+  flex:none;width:64px;text-align:center;
+  cursor:pointer;
+}
+.story .ring{
+  width:58px;height:58px;
+  border-radius:50%;
+  border:2.5px solid var(--or);
+  display:grid;place-items:center;
+  margin:0 auto 6px;
+  background:#FFF5EC;
+  font-size:26px;
+}
+.story.dim .ring{border-color:#ddd;background:var(--bg)}
+.story small{font-size:11px;color:var(--mu);font-weight:600;display:block;line-height:1.2}
+
+.near-card{
+  background:#fff;
+  border:1.5px solid var(--line);
+  border-radius:20px;
+  padding:14px;
+  margin-bottom:12px;
+}
+.near-card .top{
+  display:flex;align-items:center;gap:10px;margin-bottom:10px;
+}
+.near-card .av-sm{
+  width:40px;height:40px;border-radius:50%;
+  background:#FFF5EC;display:grid;place-items:center;font-size:20px;flex:none;
+}
+.near-card .info{flex:1;min-width:0}
+.near-card .info b{font-size:15px}
+.near-card .info small{display:block;color:var(--mu);font-size:12.5px;margin-top:2px}
+.match-pill{
+  background:var(--or-soft);
+  color:var(--or2);
+  font:700 12px system-ui,sans-serif;
+  padding:6px 10px;
+  border-radius:999px;
+  white-space:nowrap;
+}
+.near-photo{
+  background:#FFF5EC;
+  border-radius:16px;
+  height:140px;
+  display:grid;place-items:center;
+  font-size:64px;
+  margin-bottom:10px;
+  position:relative;
+}
+.loc-pill{
+  position:absolute;left:10px;bottom:10px;
+  background:#fff;
+  border-radius:999px;
+  padding:5px 10px;
+  font-size:12px;font-weight:600;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+  display:flex;align-items:center;gap:4px;
+}
+.near-actions{display:flex;gap:8px;align-items:center}
+.near-actions .btn{flex:1;padding:13px 16px;font-size:15px}
+.icon-btn{
+  width:44px;height:44px;border-radius:50%;
+  border:1.5px solid var(--line);
+  background:#fff;
+  display:grid;place-items:center;
+  font-size:18px;cursor:pointer;flex:none;
+}
+
+/* Feed */
+.feed-card{
+  background:#fff;
+  border:1.5px solid var(--line);
+  border-radius:20px;
+  padding:14px;
+  margin-bottom:14px;
+}
+.feed-head{
+  display:flex;align-items:center;gap:10px;margin-bottom:12px;
+}
+.feed-head .av-sm{
+  width:40px;height:40px;border-radius:50%;
+  background:#FFF5EC;display:grid;place-items:center;font-size:18px;flex:none;
+}
+.feed-head .info{flex:1}
+.feed-head .info b{font-size:14.5px}
+.feed-head .info small{display:block;color:var(--mu);font-size:12px;margin-top:1px}
+.status-pill{
+  background:var(--or-soft);
+  color:var(--or2);
+  font:700 12px system-ui,sans-serif;
+  padding:5px 10px;
+  border-radius:999px;
+}
+.feed-media{
+  background:#FFF5EC;
+  border-radius:16px;
+  height:160px;
+  display:grid;place-items:center;
+  font-size:56px;
+  margin-bottom:10px;
+  position:relative;
+}
+.feed-tag{
+  position:absolute;left:10px;bottom:10px;
+  background:#fff;
+  border-radius:999px;
+  padding:5px 10px;
+  font-size:12px;font-weight:600;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
+}
+.feed-text{font-size:14.5px;line-height:1.5;color:#333;margin-bottom:12px}
+.feed-actions{
+  display:flex;align-items:center;gap:8px;
+}
+.feed-actions .react{
+  display:inline-flex;align-items:center;gap:5px;
+  background:var(--bg);
+  border-radius:999px;
+  padding:6px 12px;
+  font-size:13px;font-weight:600;
+  border:0;cursor:pointer;color:var(--bk);
+}
+.feed-actions .react:hover{background:#eee}
+.feed-actions .sp{flex:1}
+.feed-actions .walk-btn{
+  background:var(--bg);
+  border:0;
+  border-radius:999px;
+  padding:7px 14px;
+  font:600 13px system-ui,sans-serif;
+  cursor:pointer;
+  color:var(--bk);
+}
+.feed-actions .walk-btn:hover{background:#eee}
+
+/* Chat */
+.chat-head{
+  display:flex;align-items:center;gap:10px;
+  padding-bottom:12px;
+  border-bottom:1px solid var(--line);
+  margin-bottom:14px;
+}
+.chat-head .back{flex:none}
+.chat-head .info{flex:1;min-width:0}
+.chat-head .info b{font-size:16px;display:block}
+.chat-head .info small{color:var(--or);font-size:12.5px;font-weight:600}
+.chat-head .match-sm{
+  background:var(--or-soft);
+  color:var(--or2);
+  font:700 13px system-ui,sans-serif;
+  padding:6px 11px;
+  border-radius:999px;
+}
+.msg{
+  max-width:82%;
+  padding:12px 14px;
+  border-radius:18px;
+  font-size:14.5px;
+  line-height:1.45;
+  margin-bottom:10px;
+}
+.msg.in{
+  background:var(--bg);
+  border-bottom-left-radius:6px;
+  align-self:flex-start;
+}
+.msg.out{
+  background:var(--or);
+  color:#fff;
+  border-bottom-right-radius:6px;
+  align-self:flex-end;
+  margin-left:auto;
+}
+.invite-card{
+  background:linear-gradient(135deg,#FFF8F2,#FFEFE4);
+  border:1.5px solid var(--or-light);
+  border-radius:18px;
+  padding:14px 16px;
+  margin:8px 0 12px;
+}
+.invite-card .ic-title{
+  display:flex;align-items:center;gap:8px;
+  font:700 15px system-ui,sans-serif;
+  color:var(--or2);
+  margin-bottom:6px;
+}
+.invite-card .ic-meta{font-size:13.5px;color:var(--mu);line-height:1.4;margin-bottom:12px}
+.scr.chat-scr{gap:0}
+
+@media (max-width:900px){
+  body{padding:0;display:block;background:#fff}
+  .side{display:none}
+  .phone{width:100%;height:100dvh;border:0;border-radius:0;box-shadow:none}
+}
+</style>
+</head>
+<body>
+<aside class="side">
+  <div class="logo">
+    <span class="brand-mark"><svg viewBox="0 0 32 32" fill="#1a1a1a"><path d="M6.5 20.5c-.2-2.2 1.2-4.2 3-5.5 1.2-.9 1.8-2.2 1.6-3.6-.3-1.8 1-3.5 2.8-3.9 1.5-.3 3 .5 3.6 1.9.3.7 1.1 1.1 1.9 1.1s1.6-.4 1.9-1.1c.6-1.4 2.1-2.2 3.6-1.9 1.8.4 3.1 2.1 2.8 3.9-.2 1.4.4 2.7 1.6 3.6 1.8 1.3 3.2 3.3 3 5.5-.3 3.2-3.4 5.5-7.2 5.5h-7.4c-3.8 0-6.9-2.3-7.2-5.5zm3.2-1.8c.6 1.5 2.4 2.5 4.4 2.5h5.8c2 0 3.8-1 4.4-2.5.1-.4-.2-.8-.6-.8H10.3c-.4 0-.7.4-.6.8zM10.8 12c-.6 0-1 .4-1 1s.4 1 1 1 1-.4 1-1-.4-1-1-1zm10.4 0c-.6 0-1 .4-1 1s.4 1 1 1 1-.4 1-1-.4-1-1-1z"/></svg></span>
+    четыре <b>лапы</b>
+  </div>
+  <p>Прототип соц-слоя «Мой питомец». Пройдите путь по кнопкам в приложении или перейдите к нужному экрану из списка.</p>
+  <ul class="steps" id="steps"></ul>
+</aside>
+<main class="phone" id="phone">
+  <div class="scr" id="scr"></div>
+</main>
+
+<script>
+const $=s=>document.querySelector(s);
+const st={name:'Бублик',district:'Центральный',ans:{},note:{},q:0,sent:{},registered:false,fromCabinet:false};
+const NAV=[
+  ['promo','1. Анонс'],
+  ['reg','2. Регистрация'],
+  ['profile','3. Профиль питомца'],
+  ['quiz','4. Анкета'],
+  ['choose','5. Выбор'],
+  ['friends','6А. Друзья'],
+  ['near','6Б. Рядом'],
+  ['mapview','6В. Карта районов'],
+  ['nearby','7. Друзья рядом (соц)'],
+  ['petcard','8. Карточка питомца'],
+  ['feed','9. Лента района'],
+  ['chat','10. Чат'],
+  ['calendar','11. Календарь'],
+  ['mycabinet','12. Мой кабинет'],
+  ['answers','13. Мои ответы'],
+  ['settings','14. Настройки'],
+  ['err','Ошибка']
+];
+const bnav=(active)=>`
+<div class="bnav">
+  <button data-a="nearby" class="${active==='nearby'?'on':''}" title="Рядом">🐾</button>
+  <button data-a="feed" class="${active==='feed'?'on':''}" title="Лента">🧭</button>
+  <button data-a="calendar" class="${active==='calendar'?'on':''}" title="Календарь">📅</button>
+  <button data-a="chat" class="${active==='chat'?'on':''}" title="Чаты">💬</button>
+  <button data-a="mycabinet" class="${active==='mycabinet'?'on':''}" title="Мой кабинет">🐶</button>
+</div>`;
+
+/* Pages: usually 2 questions each; last page is free text */
+const QPAGES=[
+ {sec:'Характер и темперамент',qs:[
+   {id:0,t:'какого размера?',o:['Малый, до 10 кг','Средний, 10–25 кг','Крупный, от 25 кг','Гигантский, от 45 кг','Не знаю'],h:'Мы подставили размер по породе, поправьте, если нужно.'},
+   {id:2,t:'какая энергия?',o:['Спокойный','Активный','Очень энергичный','Зависит от дня и настроения','Утром спокойный, вечером активный','В компании активный, один спокойный','Не знаю']}
+ ]},
+ {sec:'Общение с другими собаками',qs:[
+   {id:3,t:'как относится к другим собакам?',o:['Дружелюбный','Осторожный','Не любит','Зависит от собаки','Любит только знакомых','Не было опыта']},
+   {id:5,t:'как играет?',o:['Мягко','Азартно, может грубить','Чаще сам по себе','С игрушками и мячами','Предпочитает борьбу','Только с знакомыми','Не любит играть','Не знаю']}
+ ]},
+ {sec:'Общение с другими собаками',qs:[
+   {id:6,t:'бывали ли конфликты с другими собаками?',o:['Никогда','Редко','Бывает','Часто','Не было опыта'],h:'Честный ответ поможет подобрать безопасную компанию.'},
+   {id:7,t:'как относится к людям и детям?',o:['Любит всех','Осторожен с незнакомыми','Лучше не подходить','Любит детей','Боится детей','Не знаю']}
+ ]},
+ {sec:'Поведение на прогулках',qs:[
+   {id:10,t:'на что реагирует сильно?',m:1,o:['Другие собаки','Дети','Велосипеды и самокаты','Громкие звуки','Чужие люди','Еда и игрушки','Кошки и птицы','Ни на что особенное','Не знаю']},
+   {id:11,t:'как любит гулять?',m:1,o:['Бегать и играть','Спокойно нюхать','С мячом','Тренироваться','Исследовать новые места','Не знаю']}
+ ]},
+ {sec:'Расписание и особенности',qs:[
+   {id:12,t:'что ещё важно знать?',free:1}
+ ]}
+];
+const Q=QPAGES.flatMap(p=>p.qs); /* flat list for answer keys */
+const PETS=[
+ {n:'Луна',e:'🐩',e2:'Активный',d:'Дружелюбный',p:'Мягко',z:['Центральный','Южный'],s:'Лабрадор, 2 года',img:'https://images.unsplash.com/photo-1558788353-f76d92427f16?w=200&h=200&fit=crop'},
+ {n:'Рекс',e:'🐕',e2:'Очень энергичный',d:'Осторожный',p:'Азартно, может грубить',z:['Центральный'],s:'Овчарка, 4 года',img:'https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?w=200&h=200&fit=crop'},
+ {n:'Ласка',e:'🐶',e2:'Спокойный',d:'Дружелюбный',p:'Мягко',z:['Центральный','Южный'],s:'Шпиц, 5 лет',img:'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=200&h=200&fit=crop'},
+ {n:'Барни',e:'🦮',e2:'Активный',d:'Дружелюбный',p:'Азартно, может грубить',z:['Южный'],s:'Бигль, 3 года',img:'https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=200&h=200&fit=crop'}
+];
+const pet=p=>{const a=st.ans;let k=0;
+ if(a[2]&&a[2][0]===p.e2)k++; if(a[3]&&a[3][0]===p.d)k++; if(a[5]&&a[5][0]===p.p)k++;
+ return 52+k*16+(p.n.length%3)};
+
+function go(id){cur=id;
+ const map={friends:'friends',near:'near',mapview:'mapview',nearby:'nearby',petcard:'petcard',feed:'feed',chat:'chat',calendar:'calendar',mypet:'mycabinet',mycabinet:'mycabinet',answers:'answers',settings:'settings'};
+ document.querySelectorAll('.steps button').forEach(b=>b.classList.toggle('on',b.dataset.id===(map[id]||id)));
+ const s=$('#scr');s.style.animation='none';s.offsetHeight;s.style.animation='';
+ s.classList.toggle('quiz-mode', id==='quiz');
+ s.innerHTML=(V[id]||V.nearby)();bind();s.scrollTop=0}
+let cur='promo';
+const btn=(t,a,c='')=>`<button class="btn ${c}" data-a="${a}">${t}</button>`;
+const back=a=>`<div class="nav"><button class="back" data-a="${a}" aria-label="Назад">←</button></div>`;
+const toast=t=>{const e=document.createElement('div');e.className='toast';e.textContent=t;$('#phone').append(e);setTimeout(()=>e.remove(),2800)};
+
+const V={
+promo:()=>`
+<div class="promo-wrap">
+  <div class="promo-top">
+    <div class="promo-logo">
+      <span class="brand-mark sm"><svg viewBox="0 0 32 32" fill="#1a1a1a"><path d="M6.5 20.5c-.2-2.2 1.2-4.2 3-5.5 1.2-.9 1.8-2.2 1.6-3.6-.3-1.8 1-3.5 2.8-3.9 1.5-.3 3 .5 3.6 1.9.3.7 1.1 1.1 1.9 1.1s1.6-.4 1.9-1.1c.6-1.4 2.1-2.2 3.6-1.9 1.8.4 3.1 2.1 2.8 3.9-.2 1.4.4 2.7 1.6 3.6 1.8 1.3 3.2 3.3 3 5.5-.3 3.2-3.4 5.5-7.2 5.5h-7.4c-3.8 0-6.9-2.3-7.2-5.5zm3.2-1.8c.6 1.5 2.4 2.5 4.4 2.5h5.8c2 0 3.8-1 4.4-2.5.1-.4-.2-.8-.6-.8H10.3c-.4 0-.7.4-.6.8zM10.8 12c-.6 0-1 .4-1 1s.4 1 1 1 1-.4 1-1-.4-1-1-1zm10.4 0c-.6 0-1 .4-1 1s.4 1 1 1 1-.4 1-1-.4-1-1-1z"/></svg></span>
+      четыре <b>лапы</b>
+    </div>
+    <h1 class="promo-title">У каждой собаки<br>должен быть<br><span>свой лучший друг</span></h1>
+    <p class="promo-sub">Находите собак с похожим характером рядом с домом и устраивайте совместные прогулки</p>
+  </div>
+  <div class="promo-dog">
+    <div class="promo-dog-inner">
+      <img src="https://images.unsplash.com/photo-1633722715463-d30f4f325e24?w=900&q=85&auto=format&fit=crop" alt="Собака" onerror="this.src='https://images.unsplash.com/photo-1552053831-71594a27632d?w=900&q=80';this.onerror=null">
+      <div class="fade"></div>
+      <div class="match-badge">
+        <div class="avs"><span>🐕</span><span>🐶</span></div>
+        <div class="pct">92%<small>совместимости</small></div>
+      </div>
+    </div>
+  </div>
+  <div class="promo-cta">
+    ${btn('Найти друга для питомца','tryit')}
+    <button class="skip" data-a="think">Не сейчас</button>
+  </div>
+</div>`,
+
+think:()=>`<div class="sp"></div><div class="big2">🐾</div><h2 style="text-align:center">Хорошо, подумайте</h2><p class="mu" style="text-align:center;margin-top:8px">Через несколько дней мы напомним о новой функции. Она будет ждать в разделе «Мой питомец».</p><div class="sp"></div>${btn('Вернуться к анонсу','promo')}`,
+
+reg:()=>`${back('promo')}<h1>Регистрация</h1><p class="mu">Профиль и анкета откроются после входа.</p>
+ <label class="f" id="fp">Телефон<input id="ph" inputmode="tel" value="+7 900 000-00-00"></label>
+ <label class="f" id="fc">Код из SMS<input id="cd" inputmode="numeric" maxlength="4" placeholder="4 цифры"></label><div class="err" id="re"></div>
+ <label class="chk"><input type="checkbox" id="ok"><span>Принимаю <u data-a="rules">правила сообщества</u></span></label>
+ <div class="sp"></div><button class="btn" id="rb" data-a="doreg" disabled>Зарегистрироваться</button>`,
+
+rules:()=>`${back('profile')}<h1>Правила знакомств</h1>
+ <div class="list"><div>📍 Только район, точный адрес не показываем</div><div>📝 Честная анкета, особенно про конфликты</div><div>🌳 Первая встреча в людном месте, лучше днём</div><div>🤝 Без оскорблений, рекламы и спама</div><div>🚫 Любого владельца можно заблокировать</div><div>🐕 Питомец всегда под контролем</div><div>👁 Скрыть профиль из поиска можно в любой момент</div></div>
+ <div class="sp"></div>${btn('Принять и вернуться','acceptrules')}`,
+
+profile:()=>`${back(st.fromCabinet?'mycabinet':'promo')}<h1>Профиль питомца</h1><p class="mu">Данные из «Четыре Лапы» уже подставлены.</p>
+ <div class="ph">📷</div>
+ <label class="f">Кличка<input value="${st.name}" id="nm"></label>
+ <div class="row"><label class="f" style="flex:1">Вид и порода<input value="Собака, корги"></label><label class="f" style="width:110px">Возраст<input value="3 года"></label></div>
+ <label class="f" id="fd">Район прогулок<select id="ds"><option value="">Выберите район</option>${['Центральный','Северный','Южный'].map(d=>`<option ${d===st.district?'selected':''}>${d}</option>`).join('')}</select></label>
+ <div class="mu">Точный адрес мы не запрашиваем и не показываем.</div>
+ <div class="chips" style="margin-top:4px"><span class="tag">Привит</span><span class="tag">Стерилизован</span><span class="tag">Чип есть</span></div>
+ <label class="chk" style="margin-top:12px"><input type="checkbox" id="ok"><span>Принимаю <u data-a="rules">правила сообщества</u></span></label>
+ <div class="sp"></div><button class="btn" id="rb" data-a="${st.fromCabinet?'savecabinet':'startquiz'}" disabled>${st.fromCabinet?'Сохранить и вернуться':'Начать знакомства'}</button>`,
+
+quiz:()=>{const page=QPAGES[st.q],n=QPAGES.length,nm=st.name;
+ const secList=[...new Set(QPAGES.map(p=>p.sec))];
+ const secNum=secList.indexOf(page.sec)+1;
+ const idk=v=>v==='Не знаю'||v==='Не было опыта';
+ const grp=(o,k,m)=>`<div class="chips" data-k="${k}" data-m="${m?1:0}">${o.map(x=>`<button class="ch ${(st.ans[k]||[]).includes(x)?'on':''}${idk(x)?' ch-idk':''}">${x}</button>`).join('')}</div>`;
+ const block=q=>{
+  if(q.free) return `<h2 style="font-size:18px;margin:4px 0 8px">${nm}: ${q.t}</h2><textarea id="nt" rows="4" placeholder="Например: боится самокатов, лучше гулять без мячей. Можно пропустить.">${st.note.free||''}</textarea>
+   <div class="tip" style="margin-top:12px;font-size:13.5px">Можете также коротко ответить на дополнительные вопросы — это поможет точнее подобрать компанию (необязательно):</div>
+   <div class="mu" style="margin-top:8px;font-size:13.5px;line-height:1.5">• Какое телосложение?<br>• С кем ладит лучше всего?<br>• Как воспитан и знает ли команды?<br>• Как ведёт себя на поводке?<br>• Когда обычно гуляете?</div>`;
+  const noteVal = st.note[q.id] || '';
+  const noteShow = noteVal ? '' : 'style="display:none"';
+  return `<div class="q-block" data-qid="${q.id}">
+   <h2 style="font-size:16.5px;line-height:1.3;margin:0 0 6px">${nm}: ${q.t}</h2>
+   <div class="g1">${grp(q.o,q.id,q.m)}</div>
+   ${q.m?'<div class="mu" style="margin-top:2px;font-size:12.5px">Можно выбрать несколько</div>':''}
+   ${q.h?`<div class="mu" style="margin-top:2px;font-size:12.5px">${q.h}</div>`:''}
+   ${q.o2?`<h2 style="font-size:15px;margin:10px 0 4px">${q.h2}</h2><div class="g2">${grp(q.o2,q.id+'b',1)}</div>`:''}
+   <button class="more" data-qid="${q.id}" style="margin-top:6px;font-size:13.5px;padding:0">Рассказать подробнее</button>
+   <textarea class="note-ta" data-qid="${q.id}" rows="2" placeholder="Добавьте детали (необязательно)" ${noteShow}>${noteVal}</textarea>
+  </div>`;
+ };
+ return `<div class="nav"><button class="back" data-a="${st.fromCabinet && st.q===0 ? 'mycabinet' : 'qback'}" aria-label="Назад">←</button><div style="flex:1"><div class="mu" style="font-size:13px">Шаг ${st.q+1} из ${n}</div><div class="bar"><i style="width:${(st.q+1)/n*100}%"></i></div></div></div>
+ ${st.q===0 ? `<div class="tip" style="margin:4px 0 8px;font-size:13px;padding:10px 12px">Честные ответы помогают лучше подбирать друзей. «Подробнее» можно пропускать.</div>` : ''}
+ <div class="sec-label" style="margin-bottom:6px">${page.sec}</div>
+ ${page.qs.map(block).join('<div style="height:6px"></div>')}
+ <div class="err" id="qe"></div>
+ <div class="sp"></div>${btn(st.q===n-1?'Сохранить анкету':'Дальше','qnext')}`},
+
+choose:()=>`
+<div style="text-align:center;padding-top:8px">
+  <div style="font-size:36px;margin-bottom:6px">🎉</div>
+  <h1 style="font-size:24px;line-height:1.2">${st.name} готов к знакомствам!</h1>
+  <p class="mu" style="margin:10px 12px 14px;line-height:1.45">Мы подобрали первых потенциальных друзей поблизости</p>
+</div>
+<div class="choose-photo">
+  <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=700&h=400&fit=crop" alt="Собаки на прогулке" onerror="this.style.display='none'">
+  <div class="fade"></div>
+</div>
+<div class="sp"></div>
+${btn('Посмотреть подходящих собак','near')}
+<button class="skip" data-a="friends" style="display:block;width:100%;text-align:center;font:600 14px system-ui,sans-serif;color:var(--mu2);background:none;border:0;cursor:pointer;padding:12px 8px;margin-top:4px">Добавить своих знакомых</button>
+`,
+
+friends:()=>{const L=[['🐩','Луна','@luna_walks'],['🐕','Рекс','@rex_park']];
+ return `${back('choose')}<h1>Друзья</h1><p class="mu" style="margin-bottom:4px">Найдите знакомых по нику или выберите из контактов.</p>
+ <label class="f">Поиск по нику<input id="sq" placeholder="@ник"></label><div class="err" id="se"></div>
+ <div id="fl" style="display:grid;gap:10px;margin-top:8px">${L.map(x=>`<div class="card"><div class="av">${x[0]}</div><div class="t"><b>${x[1]}</b><small>${x[2]}</small></div><button class="mini ${st.sent[x[1]]?'done':''}" data-a="addf" data-n="${x[1]}">${st.sent[x[1]]?'Запрос отправлен':'Добавить'}</button></div>`).join('')}</div>
+ <div class="sp"></div>${btn('Искать новых друзей','near','g')}${btn('Лента района','feed','g')}`},
+
+near:()=>{const l=PETS.filter(p=>p.z.includes(st.district)).map(p=>({p,s:Math.min(97,pet(p))})).sort((a,b)=>b.s-a.s);
+ return `${back('choose')}<h1>Рядом</h1>
+ <label class="f">Район<select id="nd">${['Центральный','Северный','Южный'].map(d=>`<option ${d===st.district?'selected':''}>${d}</option>`).join('')}</select></label>
+ <button class="map-banner" data-a="mapview">
+   <span class="map-ico">🗺️</span>
+   <span><b>Посмотреть на карте</b><small>Кто гуляет в каких районах — без точной геолокации</small></span>
+   <span class="map-arrow">→</span>
+ </button>
+ ${l.length?`<div id="nl" style="display:grid;gap:10px;margin-top:4px">${l.map(({p,s})=>`<div class="card ${s>=80?'hl':''}" style="flex-direction:column;align-items:stretch;gap:10px"><div style="display:flex;gap:12px;align-items:center"><div class="av" style="overflow:hidden;padding:0;background:#eee"><img src="${p.img}" alt="${p.n}" style="width:100%;height:100%;object-fit:cover" onerror="this.parentNode.textContent='${p.e}'"></div><div class="t"><b>${p.n} <span class="pct">${s}%</span></b><small>${s>=80?'Подходит · ':''}${p.e2.toLowerCase()}, ${p.d.toLowerCase()}<br>${p.s}${s>=80?'<br><span style="color:var(--or2);font-weight:600">Совпали по характеру</span>':''}</small></div></div><button class="mini ${st.sent[p.n]?'done':''}" data-a="walk" data-n="${p.n}" style="align-self:flex-end">${st.sent[p.n]?'Приглашён':'Позвать гулять'}</button></div>`).join('')}</div>
+ <div class="tip" style="margin-top:8px">Встречайтесь в людных местах, лучше днём. Чем подробнее анкета — тем точнее подбор.</div>`
+ :`<div class="sp"></div><div class="big2">🌳</div><h2 style="text-align:center">Пока никого рядом</h2><p class="mu" style="text-align:center">Мы сообщим, когда в районе «${st.district}» появятся подходящие питомцы.</p>`}
+ <div class="sp"></div>${btn('Друзья рядом — лента','nearby','g')}${btn('Мои друзья','friends','g')}`},
+
+nearby:()=>`
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+  <h1 style="font-size:22px;margin:0">Друзья рядом</h1>
+  <button class="icon-btn" style="width:36px;height:36px;font-size:16px" data-a="settings">⚙️</button>
+</div>
+<div class="near-card">
+  <div class="top">
+    <div class="av-sm" style="overflow:hidden;padding:0"><img src="https://images.unsplash.com/photo-1558788353-f76d92427f16?w=100&h=100&fit=crop" style="width:100%;height:100%;object-fit:cover" alt=""></div>
+    <div class="info"><b>Чеддер, 2 года</b><small>Золотистый ретривер · 350 м от вас</small></div>
+    <div class="match-pill">92% совпад.</div>
+  </div>
+  <div class="near-photo" style="padding:0;overflow:hidden">
+    <img src="https://images.unsplash.com/photo-1633722715463-d30f4f325e24?w=600&h=360&fit=crop" alt="Чеддер" style="width:100%;height:100%;object-fit:cover;border-radius:16px">
+    <div class="loc-pill">📍 Парк Сокольники · Гуляет сейчас</div>
+  </div>
+  <p class="mu" style="margin:6px 0 4px;font-size:13px;color:var(--or2);font-weight:600">Совпали по энергии и стилю игры</p>
+  <p class="mu" style="margin:4px 0 12px;font-size:14px;line-height:1.45">Обожает приносить мячик, дружелюбен ко всем породам и ищет компанию на вечерние прогулки в 19:30.</p>
+  <div class="near-actions">
+    <button class="btn" data-a="walk" data-n="Чеддер">Позвать на прогулку 🐾</button>
+    <button class="icon-btn" data-a="petcard">👤</button>
+  </div>
+</div>
+<div class="near-card">
+  <div class="top">
+    <div class="av-sm" style="overflow:hidden;padding:0"><img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=100&h=100&fit=crop" style="width:100%;height:100%;object-fit:cover" alt=""></div>
+    <div class="info"><b>Оскар, 1.5 года</b><small>Вельш-корги · 500 м от вас</small></div>
+    <div class="match-pill">88% совпад.</div>
+  </div>
+  <div class="near-photo" style="padding:0;overflow:hidden;height:120px">
+    <img src="https://images.unsplash.com/photo-1612536057832-2ff7ead58192?w=600&h=300&fit=crop" alt="Оскар" style="width:100%;height:100%;object-fit:cover;border-radius:16px">
+  </div>
+  <p class="mu" style="margin:6px 0 4px;font-size:13px;color:var(--or2);font-weight:600">Похожая активность и отношение к другим собакам</p>
+  <p class="mu" style="margin:4px 0 12px;font-size:14px;line-height:1.45">Активный, любит бегать на площадке у дома. Хорошо ладит с другими собаками.</p>
+  <div class="near-actions">
+    <button class="btn" data-a="walk" data-n="Оскар">Позвать на прогулку 🐾</button>
+    <button class="icon-btn" data-a="petcard">👤</button>
+  </div>
+</div>
+<div class="sp"></div>
+${bnav('nearby')}`,
+
+petcard:()=>`
+<div class="hero-pet" style="padding:0;height:200px;overflow:hidden">
+  <img src="https://images.unsplash.com/photo-1633722715463-d30f4f325e24?w=800&h=500&fit=crop" alt="Чеддер" style="width:100%;height:100%;object-fit:cover;object-position:center 25%">
+</div>
+<div class="sheet">
+  <div class="sheet-head">
+    <div>
+      <h1>Чеддер</h1>
+      <div class="meta">Золотистый ретривер · 2 года · Мальчик</div>
+    </div>
+    <button class="btn" style="width:auto;padding:10px 18px;font-size:14px;box-shadow:none" data-a="walk" data-n="Чеддер">Дружить</button>
+  </div>
+  <div class="stats">
+    <div><b>454</b><span>Друзей</span></div>
+    <div><b>229</b><span>Прогулок</span></div>
+    <div><b>92%</b><span>Совпадение</span></div>
+  </div>
+  <p class="desc">Позитивный золотистый ретривер. Любит плавать, играть во фрисби и знакомиться с новыми четвероногими соседями.</p>
+  <div class="tags">
+    <span class="tag-s">🎾 Любит мячики</span>
+    <span class="tag-s">🤝 Дружелюбный</span>
+    <span class="tag-s">⚡ Активный</span>
+    <span class="tag-s">✅ Привит</span>
+  </div>
+  <div class="album-title">Фотоальбом питомца</div>
+  <div class="album">
+    <div class="album-item" style="padding:0;overflow:hidden"><img src="https://images.unsplash.com/photo-1558788353-f76d92427f16?w=300&h=200&fit=crop" style="width:100%;height:100%;object-fit:cover" alt=""></div>
+    <div class="album-item" style="padding:0;overflow:hidden"><img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=300&h=200&fit=crop" style="width:100%;height:100%;object-fit:cover" alt=""></div>
+  </div>
+</div>
+<div class="sp"></div>
+${bnav('')}`,
+
+feed:()=>`
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+  <h1 style="font-size:22px;margin:0">Лента района</h1>
+  <button class="icon-btn" style="width:36px;height:36px;font-size:16px">🔍</button>
+</div>
+<div class="tip" style="margin-bottom:12px">Чем подробнее заполнена анкета — тем точнее мы подбираем компанию для прогулок.</div>
+<div class="feed-card">
+  <div class="feed-head">
+    <div class="av-sm" style="overflow:hidden;padding:0;background:#FFF3ED;display:grid;place-items:center;font-size:20px">👥</div>
+    <div class="info"><b>Групповая прогулка</b><small>Анонс · Центральный район</small></div>
+    <div class="status-pill">Сбор</div>
+  </div>
+  <p class="feed-text">Собираем группу на субботу в 11:00 в парке у дома. Будет 4–5 собак разного размера. Кто хочет присоединиться — пишите в комментарии.</p>
+  <div class="feed-actions">
+    <button class="react">❤️ 12</button>
+    <button class="react">💬 5</button>
+    <div class="sp"></div>
+    <button class="walk-btn">Пойду</button>
+  </div>
+</div>
+<div class="feed-card">
+  <div class="feed-head">
+    <div class="av-sm" style="overflow:hidden;padding:0"><img src="https://images.unsplash.com/photo-1558788353-f76d92427f16?w=80&h=80&fit=crop" style="width:100%;height:100%;object-fit:cover" alt=""></div>
+    <div class="info"><b>Чеддер и Марина</b><small>15 мин назад · Сквер у дома</small></div>
+    <div class="status-pill">На прогулке</div>
+  </div>
+  <div class="feed-media" style="padding:0;overflow:hidden">
+    <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=700&h=400&fit=crop" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:16px">
+    <div class="feed-tag">☀️ Утренняя пробежка</div>
+  </div>
+  <p class="feed-text">Нашли новую тропинку в парке и протестировали лакомства из «Четыре Лапы». Кто присоединится завтра утром?</p>
+  <div class="feed-actions">
+    <button class="react">❤️ 248</button>
+    <button class="react">💬 23</button>
+    <div class="sp"></div>
+    <button class="walk-btn" data-a="chat">Погулять</button>
+  </div>
+</div>
+<div class="feed-card">
+  <div class="feed-head">
+    <div class="av-sm" style="overflow:hidden;padding:0"><img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=80&h=80&fit=crop" style="width:100%;height:100%;object-fit:cover" alt=""></div>
+    <div class="info"><b>Луна и Аня</b><small>1 ч назад · Парк</small></div>
+    <div class="status-pill">Свободен</div>
+  </div>
+  <div class="feed-media" style="padding:0;overflow:hidden">
+    <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=700&h=400&fit=crop" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:16px">
+    <div class="feed-tag">🌳 Вечерняя прогулка</div>
+  </div>
+  <p class="feed-text">Луна сегодня особенно энергичная. Ищем спокойную компанию на 30–40 минут.</p>
+  <div class="feed-actions">
+    <button class="react">❤️ 64</button>
+    <button class="react">💬 8</button>
+    <div class="sp"></div>
+    <button class="walk-btn" data-a="chat">Погулять</button>
+  </div>
+</div>
+<div class="sp"></div>
+${bnav('feed')}`,
+
+chat:()=>`
+<div class="chat-head">
+  <button class="back" data-a="nearby" aria-label="Назад">←</button>
+  <div class="info"><b>Марина и Чеддер</b><small>● В сети · 350 м от вас</small></div>
+  <div class="match-sm">92%</div>
+</div>
+<div class="msg in">Привет! У нас с вашим питомцем 92% совместимости — совпали по энергии и стилю игры 🐾</div>
+<div class="msg out">Привет! Здорово, мы как раз ищем компанию для вечерних прогулок в парке.</div>
+<div class="msg in">Отлично! Пойдём сегодня в 19:30 к центральной аллее?</div>
+<div class="invite-card">
+  <div class="ic-title">📅 Приглашение на прогулку</div>
+  <div class="ic-meta">Сегодня, 19:30 · Парк у дома · Совместная прогулка 45 мин</div>
+  <button class="btn" data-a="confirm">Подтвердить встречу</button>
+</div>
+<div class="sp"></div>
+${bnav('chat')}`,
+
+mapview:()=>`
+${back('near')}<h1>Карта районов</h1>
+<p class="map-legend">Только район — точный адрес не показываем</p>
+<div class="map-view">
+  <div class="map-pin" style="left:32%;top:38%" data-a="petcard"><div class="dot"><img src="https://images.unsplash.com/photo-1558788353-f76d92427f16?w=80&h=80&fit=crop" alt=""></div><small>Луна</small></div>
+  <div class="map-pin" style="left:58%;top:52%" data-a="petcard"><div class="dot"><img src="https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?w=80&h=80&fit=crop" alt=""></div><small>Рекс</small></div>
+  <div class="map-pin" style="left:45%;top:28%" data-a="petcard"><div class="dot"><img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=80&h=80&fit=crop" alt=""></div><small>Ласка</small></div>
+  <div class="map-pin" style="left:70%;top:42%" data-a="petcard"><div class="dot"><img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=80&h=80&fit=crop" alt=""></div><small>Барни</small></div>
+  <div style="position:absolute;left:12%;top:70%;font-size:11px;font-weight:700;color:#666;background:rgba(255,255,255,.85);padding:4px 8px;border-radius:8px">Центральный</div>
+  <div style="position:absolute;right:10%;top:18%;font-size:11px;font-weight:700;color:#666;background:rgba(255,255,255,.85);padding:4px 8px;border-radius:8px">Северный</div>
+  <div style="position:absolute;left:40%;bottom:12%;font-size:11px;font-weight:700;color:#666;background:rgba(255,255,255,.85);padding:4px 8px;border-radius:8px">Южный</div>
+</div>
+<div class="tip">Нажмите на питомца, чтобы открыть профиль. Геолокация в реальном времени не используется.</div>
+<div class="sp"></div>
+${btn('К списку рядом','near')}
+`,
+
+calendar:()=>{
+ const days=[{d:'Пн',n:17},{d:'Вт',n:18},{d:'Ср',n:19,on:1},{d:'Чт',n:20,has:1},{d:'Пт',n:21},{d:'Сб',n:22,has:1},{d:'Вс',n:23}];
+ const friendEvents = Object.keys(st.sent).filter(k=>st.sent[k]).slice(0,2).map((name,i)=>({
+  ico: i%2 ? '🐩' : '🐕',
+  title: `С ${name}`,
+  meta: i===0 ? 'Чт, 20 ноя · 19:30 · 45 мин · Друг' : 'Сб, 22 ноя · 10:00 · Парк у дома · Друг'
+ }));
+ const baseEvents = [
+  {ico:'🐕',title:'С Чеддером в Сокольниках',meta:'Чт, 20 ноя · 19:30 · 45 мин · Друг'},
+  {ico:'🐩',title:'Утро с Луной',meta:'Сб, 22 ноя · 10:00 · Парк у дома · Друг'}
+ ];
+ const events = friendEvents.length ? friendEvents : baseEvents;
+ return `
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+  <h1 style="font-size:22px;margin:0">Календарь</h1>
+  <span class="mu" style="font-weight:600">Ноябрь</span>
+</div>
+<div class="cal-week">${days.map(x=>`<div class="cal-day ${x.on?'on':''} ${x.has?'has':''}"><span>${x.d}</span><b>${x.n}</b></div>`).join('')}</div>
+<h2 style="font-size:16px;margin-bottom:10px">Предстоящие прогулки</h2>
+${events.map(e=>`<div class="cal-event"><div class="ce-ico">${e.ico}</div><div><b>${e.title}</b><small>${e.meta}</small></div></div>`).join('')}
+<div class="cal-event">
+  <div class="ce-ico">🐶</div>
+  <div><b>Вечер с Оскаром</b><small>Пт, 21 ноя · 18:00 · Площадка · Запланировано другом</small></div>
+</div>
+<div class="tip" style="margin-top:8px">Здесь видны прогулки, которые запланировали ваши друзья. Напоминание придёт за час до встречи</div>
+<button class="btn g" data-a="addwalk" style="margin-top:12px">+ Запланировать прогулку</button>
+<div class="sp"></div>
+${bnav('calendar')}`},
+
+done:()=>`<div class="sp"></div><div class="big2">🐾</div><h1 style="text-align:center">Приглашение отправлено</h1><p class="mu" style="text-align:center;margin-top:6px">Владелец получит уведомление. Можно продолжить знакомства в ленте или посмотреть, кто ещё рядом.</p><div class="sp"></div>${btn('Кто рядом','nearby')}${btn('Лента района','feed','g')}`,
+
+mycabinet:()=>{
+ const friends = Object.keys(st.sent).filter(k=>st.sent[k]);
+ const ansTags = Q.slice(0,5).map(q => {
+  const a = st.ans[q.id] || [];
+  return a.length ? a[0] : null;
+ }).filter(Boolean);
+ return `
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+  <h1 style="font-size:22px;margin:0">Мой кабинет</h1>
+  <button class="icon-btn" style="width:36px;height:36px;font-size:16px" data-a="settings">⚙️</button>
+</div>
+<div style="background:linear-gradient(145deg,#FFE4C8,#FFD6E0);border-radius:22px;padding:16px;display:flex;align-items:center;gap:14px;margin-bottom:12px;position:relative;overflow:hidden">
+  <div style="position:absolute;right:-20px;top:-20px;width:100px;height:100px;background:rgba(255,255,255,.35);border-radius:50%"></div>
+  <div style="width:72px;height:72px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:40px;flex:none;box-shadow:0 6px 16px rgba(0,0,0,.1);position:relative">🐶</div>
+  <div style="position:relative">
+    <h2 style="font-size:21px;margin:0 0 2px">${st.name}</h2>
+    <div style="font-size:14px;color:#444">Собака, корги · 3 года</div>
+    <div style="font-size:13.5px;color:var(--or2);font-weight:600;margin-top:3px">${st.district} район</div>
+  </div>
+</div>
+<div class="stats" style="margin-bottom:14px">
+  <div><b>${friends.length}</b><span>Друзей</span></div>
+  <div><b>${Object.keys(st.ans).length}</b><span>Ответов</span></div>
+  <div><b>92%</b><span>Профиль</span></div>
+</div>
+<div style="display:flex;gap:8px;margin-bottom:16px">
+  <button class="btn g" style="flex:1;padding:10px;font-size:14px" data-a="editprofile">Профиль</button>
+  <button class="btn g" style="flex:1;padding:10px;font-size:14px" data-a="editquiz">Анкета</button>
+  <button class="btn g" style="flex:1;padding:10px;font-size:14px" data-a="answers">Ответы</button>
+</div>
+<div style="margin-bottom:14px">
+  <h2 style="font-size:16px;margin:0 0 8px">Характер</h2>
+  <div class="tags" style="margin:0">
+    <span class="tag-s">Привит</span>
+    <span class="tag-s">Стерилизован</span>
+    ${ansTags.length ? ansTags.map(t=>`<span class="tag-s">${t}</span>`).join('') : '<span class="mu" style="font-size:13.5px">Заполните анкету — появятся теги</span>'}
+  </div>
+</div>
+<div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+    <h2 style="font-size:16px;margin:0">Друзья</h2>
+    <button class="more" data-a="near" style="font-size:13.5px">Найти ещё →</button>
+  </div>
+  ${friends.length ? `<div style="display:grid;gap:8px">${friends.map(f=>`<div class="card" style="padding:10px 12px"><div class="av" style="width:42px;height:42px;font-size:22px;background:linear-gradient(145deg,#FFF0E6,#FFE0C8)">🐾</div><div class="t"><b>${f}</b><small>Добавлен · можно позвать гулять</small></div></div>`).join('')}</div>` : '<div class="tip" style="font-size:13.5px">Пока нет друзей. Загляните в «Рядом» — там уже есть подходящие собаки.</div>'}
+</div>
+<div class="sp"></div>
+${bnav('mycabinet')}`},
+
+settings:()=>`${back('mycabinet')}<h1>Настройки</h1>
+ <div class="list">
+  <div>Район прогулок: <b>${st.district}</b></div>
+  <div>Уведомления о новых совпадениях — включены</div>
+  <div>Напоминания о прогулках — включены</div>
+  <div>Профиль виден в поиске</div>
+ </div>
+ <button class="btn g" data-a="editprofile" style="margin-top:14px">Изменить район</button>
+ <button class="btn g" data-a="hide" style="margin-top:8px">Скрыть профиль из поиска</button>
+ <div class="sp"></div>
+ ${btn('Готово','mycabinet')}`,
+
+answers:()=>{
+ const blocks = Q.map(q => {
+  const ans = (st.ans[q.id] || []).join(', ') || '—';
+  const note = st.note[q.id] ? `<div class="mu" style="margin-top:4px">Подробнее: ${st.note[q.id]}</div>` : '';
+  const freeNote = q.free && st.note.free ? `<div class="mu"> ${st.note.free}</div>` : '';
+  return `<div class="card" style="margin-bottom:8px"><div class="t"><b>${q.t.replace('{n}',st.name)}</b><small>${ans}</small>${note}${freeNote}</div></div>`;
+ }).join('');
+ return `${back('mycabinet')}<h1>Мои ответы</h1>
+ <p class="mu" style="margin-bottom:12px">Вы можете изменить ответы в любой момент — это поможет точнее подбирать друзей.</p>
+ ${blocks}
+ <div class="sp"></div>
+ ${btn('Изменить анкету','editquiz')}${btn('В кабинет','mycabinet','g')}`},
+
+err:()=>`<div class="sp"></div><div class="big2">🐾</div><h1 style="text-align:center">Что-то пошло не так</h1><p class="mu" style="text-align:center;margin-top:6px">Приносим извинения. Попробуйте позже или обратитесь в поддержку.</p><div class="sp"></div>${btn('Повторить','promo')}${btn('В поддержку','support','g')}`
+};
+
+function bind(){
+ document.querySelectorAll('#scr [data-a]').forEach(e=>e.onclick=()=>act(e.dataset.a,e));
+ const ok=$('#ok');if(ok){const up=()=>$('#rb').disabled=!ok.checked;ok.onchange=up;st.ok&&(ok.checked=1);up()}
+ document.querySelectorAll('.chips[data-k]').forEach(c=>c.onclick=e=>{const b=e.target.closest('.ch');if(!b)return;
+  const k=c.dataset.k,m=c.dataset.m==='1',v=b.textContent;let a=st.ans[k]||[];
+  a=m?(a.includes(v)?a.filter(x=>x!==v):[...a,v]):[v];st.ans[k]=a;
+  c.querySelectorAll('.ch').forEach(x=>x.classList.toggle('on',a.includes(x.textContent)));
+  c.closest('.scr').querySelector('.bad')?.classList.remove('bad');$('#qe')&&($('#qe').textContent='')});
+ document.querySelectorAll('.more[data-qid]').forEach(btn=>{
+  btn.onclick=()=>{
+   const qid=btn.dataset.qid;
+   const ta=document.querySelector(`.note-ta[data-qid="${qid}"]`);
+   if(ta){
+    const open=ta.style.display==='none';
+    ta.style.display=open?'':'none';
+    btn.textContent=open?'− Скрыть подробности':'Рассказать подробнее';
+    if(open)ta.focus();
+   }
+  };
+ });
+ document.querySelectorAll('.note-ta').forEach(ta=>{
+  ta.oninput=()=>{st.note[ta.dataset.qid]=ta.value};
+ });
+ const sq=$('#sq');if(sq)sq.oninput=()=>{const v=sq.value.trim().toLowerCase().replace('@','');
+  const ok=!v||['luna_walks','rex_park','луна','рекс'].some(x=>x.includes(v));
+  $('#se').textContent=ok?'':'Ник не найден. Проверьте написание.';$('#fl').style.display=ok?'':'none'};
+ const nd=$('#nd');if(nd)nd.onchange=()=>{st.district=nd.value;go('near')};
+}
+function act(a,e){
+ const m={tryit:()=>go('profile'),think:()=>go('think'),promo:()=>go('promo'),rules:()=>{st.ok=$('#ok')?.checked;go('rules')},
+ acceptrules:()=>{st.ok=true;go('profile')},
+ doreg:()=>{const c=$('#cd').value;if(!/^\d{4}$/.test(c)){$('#fc').classList.add('bad');$('#re').textContent='Введите 4 цифры из SMS или нажмите «Повторить» через минуту.';return}
+  if(c==='0000'){go('err');return}st.registered=true;go('profile')},
+ startquiz:()=>{const d=$('#ds').value;if(!d){$('#fd').classList.add('bad');toast('Выберите район прогулок');return}st.district=d;st.name=$('#nm').value.trim()||'Бублик';st.q=0;st.fromCabinet=false;go('quiz')},
+ savecabinet:()=>{const d=$('#ds').value;if(!d){$('#fd').classList.add('bad');toast('Выберите район прогулок');return}st.district=d;st.name=$('#nm').value.trim()||'Бублик';st.fromCabinet=false;toast('Профиль обновлён');go('mycabinet')},
+ qback:()=>{if(st.q>0){save();st.q--;go('quiz')}else if(st.fromCabinet){save();st.fromCabinet=false;go('mycabinet')}else go('profile')},
+ qnext:()=>{const page=QPAGES[st.q];
+  let bad=false;
+  page.qs.forEach(q=>{
+   if(q.free)return;
+   if(!(st.ans[q.id]||[]).length){bad=true;document.querySelector(`.q-block[data-qid="${q.id}"] .g1`)?.classList.add('bad')}
+   if(q.o2&&!(st.ans[q.id+'b']||[]).length){bad=true;document.querySelector(`.q-block[data-qid="${q.id}"] .g2`)?.classList.add('bad')}
+  });
+  if(bad){$('#qe').textContent='Ответьте на все вопросы на экране, чтобы продолжить.';return}
+  save();
+  if(st.q<QPAGES.length-1){st.q++;go('quiz')}else{toast('Анкета сохранена');go('choose')}},
+ friends:()=>go('friends'),near:()=>go('near'),nearby:()=>go('nearby'),
+ mapview:()=>go('mapview'),calendar:()=>go('calendar'),
+ choose:()=>go('choose'),petcard:()=>go('petcard'),feed:()=>go('feed'),chat:()=>go('chat'),
+ mypet:()=>go('mycabinet'),
+ mycabinet:()=>go('mycabinet'),
+ answers:()=>go('answers'),
+ editprofile:()=>{st.fromCabinet=true;go('profile')},
+ editquiz:()=>{st.fromCabinet=true;st.q=0;go('quiz')},
+ addwalk:()=>toast('Выберите день в календаре и время — напоминание включится автоматически'),
+ addf:()=>{st.sent[e.dataset.n]=1;e.textContent='Запрос отправлен';e.classList.add('done');toast('Запрос отправлен: '+e.dataset.n)},
+ walk:()=>{st.sent[e.dataset.n]=1;if(cur==='near'||cur==='friends'){go('done')}else{toast('Приглашение отправлено: '+(e.dataset.n||''));go('chat')}},
+ confirm:()=>{toast('Встреча подтверждена! Напоминание придёт в 19:00');},
+ invite:()=>toast('Ссылка-приглашение скопирована'),
+ hide:()=>{toast('Профиль скрыт из поиска. Вернуть его можно в настройках')},
+ settings:()=>go('settings'),
+ support:()=>toast('Чат с поддержкой откроется в приложении')};
+ m[a]&&m[a]()}
+function save(){
+ const t=$('#nt');if(t){const q=Q[st.q];if(q&&q.free)st.note.free=t.value}
+ document.querySelectorAll('.note-ta').forEach(ta=>{
+  const qid=ta.dataset.qid;
+  if(ta.value.trim())st.note[qid]=ta.value; else delete st.note[qid];
+ });
+}
+
+$('#steps').innerHTML=NAV.map(x=>`<li><button data-id="${x[0]}">${x[1]}</button></li>`).join('');
+document.querySelectorAll('#steps button').forEach(b=>b.onclick=()=>{const id=b.dataset.id;if(id==='quiz')st.q=0;go(id)});
+go('promo');
+</script>
+</body>
+</html>
